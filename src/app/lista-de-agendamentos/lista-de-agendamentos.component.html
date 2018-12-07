@@ -23,6 +23,8 @@
           <input *ngIf="AgendamentoDoacao.editando" type="text" [(ngModel)]="AgendamentoDoacao.nome" name="nome-{{AgendamentoDoacao.uid}}">
         </td>
         <td>
+
+          
         <span *ngIf="!AgendamentoDoacao.editando">{{AgendamentoDoacao.cpf}}</span>
             <input *ngIf="AgendamentoDoacao.editando" type="text" [(ngModel)]="AgendamentoDoacao.cpf" name="cpf-{{AgendamentoDoacao.uid}}">
        </td>
