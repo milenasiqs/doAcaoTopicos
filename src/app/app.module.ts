@@ -15,6 +15,10 @@ import { DBService } from './servicos/db.service';
 
 import { ListaDeUniformeComponent } from './lista-de-uniforme/lista-de-uniforme.component';
 import { UniformeComponent } from './uniforme/uniforme.component';
+import { AgendamentoDoacaoComponent } from './agendamento-doacao/agendamento-doacao.component';
+import { ListaDeAgendamentosComponent } from './lista-de-agendamentos/lista-de-agendamentos.component';
+import { SolicitacaoDeDoacaoComponent } from './solicitacao-de-doacao/solicitacao-de-doacao.component';
+import { ListaDeSolicitacoesComponent } from './lista-de-solicitacoes/lista-de-solicitacoes.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,15 @@ import { UniformeComponent } from './uniforme/uniforme.component';
     
     ListaDeUniformeComponent,
     
-    UniformeComponent
+    UniformeComponent,
+    
+    AgendamentoDoacaoComponent,
+    
+    ListaDeAgendamentosComponent,
+    
+    SolicitacaoDeDoacaoComponent,
+    
+    ListaDeSolicitacoesComponent
   ],
   imports: [
     BrowserModule,
