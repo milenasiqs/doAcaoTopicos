@@ -1,3 +1,49 @@
-<p>
-  lista-de-solicitacoes works!
-</p>
+<div *ngIf="carregando" class="progress">
+  <div class="indeterminate"></div>
+</div>
+
+<h6 *ngIf="!SolicitacaoDeDoacao && carregando">Não há solicitações cadastradas</h6>
+
+<div *ngIf="!carregando">
+  <h6 align="center">Solicitações cadastradas</h6>
+
+  <table> 
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Tipo sanguíneo</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let SolicitacaoDeDoacao of solicitacoes">
+       
+          <td>
+            <span *ngIf="!SolicitacaoDeDoacao.editando">{{SolicitacaoDeDoacao.nome}}</span>
+            <input *ngIf="SolicitacaoDeDoacao.editando" type="text" [(ngModel)]="SolicitacaoDeDoacao.nome" name="nome-{{SolicitacaoDeDoacao.uid}}">
+          </td>
+          <td>
+          <span *ngIf="!SolicitacaoDeDoacao.editando">{{SolicitacaoDeDoacao.tipoSanguineo}}</span>
+              <input *ngIf="SolicitacaoDeDoacao.editando" type="text" [(ngModel)]="SolicitacaoDeDoacao.tipoSanguineo" name="tipoSanguineo-{{SolicitacaoDeDoacao.uid}}">
+         </td>
+
+          <td *ngIf="!SolicitacaoDeDoacao.editando" class="remove-parent">
+          <a class="edit-parent" (click)="editar(SolicitacaoDeDoacao)" href="javascript:void(0);">
+            <i class="material-icons">edit</i>
+          </a>
+          <a (click)="remover(SolicitacaoDeDoacao.uid)" href="javascript:void(0);">
+            <i class="material-icons">delete</i>
+          </a>
+        </td>
+        <td *ngIf="SolicitacaoDeDoacao.editando" class="remove-parent">
+            <a class="confirm-parent" (click)="confirmEdit(SolicitacaoDeDoacao)" href="javascript:void(0);">
+              <i class="material-icons">check</i>
+            </a>
+            <a (click)="cancelEdit(SolicitacaoDeDoacao)" href="javascript:void(0);">
+              <i class="material-icons">close</i>
+            </a>
+          </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

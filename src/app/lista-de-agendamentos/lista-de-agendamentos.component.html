@@ -1,3 +1,52 @@
-<p>
-  lista-de-agendamentos works!
-</p>
+<div *ngIf="carregando" class="progress">
+  <div class="indeterminate"></div>
+</div>
+
+<h6 *ngIf="!AgendamentoDoacao && carregando">Não há agendamentos cadastrados</h6>
+
+<div *ngIf="!carregando">
+  <h6 align="center">Agendamentos cadastrados</h6>
+
+  <table> 
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Cpf</th>
+        <th>Data</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let AgendamentoDoacao of agendamentoDoacoes">
+        <td>
+          <span *ngIf="!AgendamentoDoacao.editando">{{AgendamentoDoacao.nome}}</span>
+          <input *ngIf="AgendamentoDoacao.editando" type="text" [(ngModel)]="AgendamentoDoacao.nome" name="nome-{{AgendamentoDoacao.uid}}">
+        </td>
+        <td>
+        <span *ngIf="!AgendamentoDoacao.editando">{{AgendamentoDoacao.cpf}}</span>
+            <input *ngIf="AgendamentoDoacao.editando" type="text" [(ngModel)]="AgendamentoDoacao.cpf" name="cpf-{{AgendamentoDoacao.uid}}">
+       </td>
+       <td>
+        <span *ngIf="!AgendamentoDoacao.editando">{{AgendamentoDoacao.data}}</span>
+        <input *ngIf="AgendamentoDoacao.editando" type="text" [(ngModel)]="AgendamentoDoacao.data" name="data-{{AgendamentoDoacao.uid}}">
+      </td>
+          <td *ngIf="!AgendamentoDoacao.editando" class="remove-parent">
+          <a class="edit-parent" (click)="editar(AgendamentoDoacao)" href="javascript:void(0);">
+            <i class="material-icons">edit</i>
+          </a>
+          <a (click)="remover(AgendamentoDoacao.uid)" href="javascript:void(0);">
+            <i class="material-icons">delete</i>
+          </a>
+        </td>
+        <td *ngIf="AgendamentoDoacao.editando" class="remove-parent">
+            <a class="confirm-parent" (click)="confirmEdit(AgendamentoDoacao)" href="javascript:void(0);">
+              <i class="material-icons">check</i>
+            </a>
+            <a (click)="cancelEdit(AgendamentoDoacao)" href="javascript:void(0);">
+              <i class="material-icons">close</i>
+            </a>
+          </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

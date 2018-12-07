@@ -9,12 +9,9 @@ import { AppComponent } from './app.component';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { JogadorComponent } from './jogador/jogador.component';
-import { ListaDejogadoresComponent } from './lista-dejogadores/lista-dejogadores.component';
+
 import { DBService } from './servicos/db.service';
 
-import { ListaDeUniformeComponent } from './lista-de-uniforme/lista-de-uniforme.component';
-import { UniformeComponent } from './uniforme/uniforme.component';
 import { AgendamentoDoacaoComponent } from './agendamento-doacao/agendamento-doacao.component';
 import { ListaDeAgendamentosComponent } from './lista-de-agendamentos/lista-de-agendamentos.component';
 import { SolicitacaoDeDoacaoComponent } from './solicitacao-de-doacao/solicitacao-de-doacao.component';
@@ -23,12 +20,6 @@ import { ListaDeSolicitacoesComponent } from './lista-de-solicitacoes/lista-de-s
 @NgModule({
   declarations: [
     AppComponent,
-    JogadorComponent,
-    ListaDejogadoresComponent,
-    
-    ListaDeUniformeComponent,
-    
-    UniformeComponent,
     
     AgendamentoDoacaoComponent,
     
@@ -44,10 +35,10 @@ import { ListaDeSolicitacoesComponent } from './lista-de-solicitacoes/lista-de-s
     routing,
     AngularFireModule.initializeApp(environment.firebase),
     RouterModule.forRoot([
-      { path: 'jogador', component: JogadorComponent },
-      { path: 'listaDejogadores', component: ListaDejogadoresComponent },
-      { path: 'uniforme', component: UniformeComponent },
-      { path: 'listaDeUniforme', component: ListaDeUniformeComponent }
+      { path: 'agendamentoDoacao', component: AgendamentoDoacaoComponent },
+      { path: 'listaDeAgendamentos', component: ListaDeAgendamentosComponent },
+      { path: 'solicitacaoDeDoacao', component: SolicitacaoDeDoacaoComponent },
+      { path: 'listaDeSolicitacoes', component: ListaDeSolicitacoesComponent }
     ])
   ],
   providers: [AngularFireDatabase,DBService],
